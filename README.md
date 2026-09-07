@@ -1,6 +1,4 @@
-# secuGuide
-
-## Propuesta de Desarrollo de Software:
+# Propuesta de Desarrollo de Software:secuGuide
 
 Plataforma Web de Guía Educativa y
 Diagnóstico Básico en Ciberseguridad y
