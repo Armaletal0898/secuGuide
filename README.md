@@ -22,7 +22,7 @@ módulos instructivos se reejan de inmediato para todos los usuarios sin requeri
 Descripción general del sistema y denición del problema a resolver
 
 
-## Denicion del problema
+## Definicion del problema
 
 En el entorno informático cotidiano, tanto en hogares como en organizaciones, los usuario nales
 enfrentan con frecuencia incidentes comunes relacionados con la ciberseguridad **(correos
