@@ -21,8 +21,8 @@ Soporte Técnico.
 Nombre del Aplicativo: SecuGuide (o Guía de Ciberseguirdad y Soporte Básico).
 Plataforma de desarrollo: Aplicación Web (Navegador):
 
-+  **Frontend:** HTML & CSS
-+  **Backend:** JAVASCRIPT & PYTHON
++  **FRONTED:** html & css
++  **BACKEND:** javascript & python
 
 
 <br>
@@ -137,3 +137,58 @@ equipo de forma autónoma.
 
   +  **No incluye infraestructura de base de datos para usuarios complejos**: Se enfoca en la consulta e
 interacción directa del cliente sin requerir registro con tarjeta de crédito o pasarelas de pago.
+
+
+
+
+
+# Despliegue de plataforma
+
+### Construir la Imagen: Podman
+
+```bash
+
+podman build -f Dockerfile -t localhost/secu-guide-app:latest .
+
+```
+
+
+
+<br>
+
+### Ejecutar el contenedor (con la bandera `-replace` para actualizarlo fácilmente):
+
+```bash
+
+podman run -d --replace -p 8000:8000 --name secu-guide-container localhost/secu-guide-app:latest
+
+```
+
+
+
+
+<br>
+<br>
+
+### Construir la Imagen: Docker
+
+```bash
+
+docker build -t secu-guide-app:latest .
+
+```
+
+
+
+<br>
+
+### Ejecutar el contenedor (con la bandera `-replace` para actualizarlo fácilmente):
+
+```bash
+
+docker run -d --rm -p 8000:8000 --name secu-guide-container secu-guide-app:latest
+
+```
+
+
+> Nota: En Docker puedes usar `--rm` para que elimine automáticamente el contenedor antinguo al detenerlo, o usar `--name` y hacer un `docker stop` y `docker rm` previo si prefieres controlarlo de forma manual.
