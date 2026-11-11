@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecuGuide Enterprise - Portal de Seguridad y Soporte</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- HEADER LIMPIO -->
+    <header>
+        <div class="header-left">
+            <button id="menuToggle" class="menu-toggle-btn" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="logo" onclick="showSection('inicio')" style="cursor: pointer;">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>SecuGuide <small>Enterprise</small></span>
+            </div>
+        </div>
+
+        <div class="header-right">
+            <button class="btn-main-action secondary" onclick="showSection('inicio')">
+                <i class="fa-solid fa-house"></i> Ir a Inicio
+       	    </button>
+
+       	<div class="header-right">
+       	     <button class="btn-main-action secondary" onclick="showSection('about')">
+       	         <i class="fa-solid fa-circle-info"></i> Info
+       	     </button>
+    </header>
+
+    <!-- MENÚ LATERAL DESPLEGABLE (SIDEBAR) -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h3>Panel Corporativo</h3>
+            <button id="closeSidebar" class="close-btn">&times;</button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" onclick="showSection('inicio')"><i class="fa-solid fa-house"></i> Inicio</a></li>
+            <li><a href="#" onclick="showSection('passwords')"><i class="fa-solid fa-key"></i> Contraseñas Seguras</a></li>
+            <li><a href="#" onclick="showSection('glossary')"><i class="fa-solid fa-book-open"></i> Glosario Empresarial</a></li>
+            <li><a href="#" onclick="showSection('hashes')"><i class="fa-solid fa-fingerprint"></i> Validador de Hashes</a></li>
+            <li><a href="#" onclick="showSection('urlcheck')"><i class="fa-solid fa-link"></i> Analizador de Enlaces</a></li>
+            <li><a href="#" onclick="showSection('phish-sim')"><i class="fa-solid fa-fish-fins"></i> Simulador de Phishing</a></li>
+            <li><a href="#" onclick="showSection('security-test')"><i class="fa-solid fa-clipboard-check"></i> Test de Postura</a></li>
+            <li><a href="#" onclick="showSection('report-incident')"><i class="fa-solid fa-paper-plane"></i> Reportar Incidente a TI</a></li>
+            <li><a href="#" onclick="showSection('solutions')"><i class="fa-solid fa-screwdriver-wrench"></i> Centro de Soluciones</a></li>
+            <li><a href="#" onclick="showSection('policies')"><i class="fa-solid fa-file-shield"></i> Políticas de Seguridad</a></li>
+            <li><a href="#" onclick="showSection('about')"><i class="fa-solid fa-circle-info"></i> Acerca de la Plataforma</a></li>
+        </ul>
+    </aside>
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="container">
+        
+       <!-- VISTA 1: INICIO (REDISEÑADO & MODERNO) -->
+       <section id="sec-inicio" class="app-view active">
+            <!-- Hero de Bienvenida -->
+            <div class="welcome-hero-pro">
+                <div class="hero-badge"><i class="fa-solid fa-shield-halved"></i> Centro de Autoconsulta & Protección</div>
+                <h1>Bienvenido a SecuGuide Enterprise</h1>
+                <p>Tu escudo digital corporativo. Una suite diseñada para resolver problemas técnicos cotidianos, evaluar riesgos y proteger a la organización sin tecnicismos.</p>
+                
+                <div class="welcome-buttons">
+                    <button class="btn-main-action" onclick="showSection('solutions')">
+                        <i class="fa-solid fa-screwdriver-wrench"></i> Centro de Soluciones
+                    </button>
+                    <button class="btn-main-action secondary" onclick="showSection('phish-sim')">
+                        <i class="fa-solid fa-fish-fins"></i> Probar Simulador
+                    </button>
+                </div>
+            </div>
+
+            <!-- Paso a Paso: Cómo usar la app en 30 segundos -->
+            <div class="card-section" style="margin-top: 25px;">
+                <h2><i class="fa-solid fa-compass"></i> ¿Cómo usar esta plataforma? (Guía Rápida)</h2>
+                <div class="steps-grid">
+                    <div class="step-card highlight">
+                        <div class="step-number">1</div>
+                        <h4>Abre el Menú Lateral</h4>
+                        <p>Haz clic en el icono de las 3 líneas (☰) en la esquina superior izquierda para explorar todas las herramientas disponibles.</p>
+                    </div>
+                    <div class="step-card highlight">
+                        <div class="step-number">2</div>
+                        <h4>Diagnostica o Valida</h4>
+                        <p>Resuelve problemas de PC o impresoras en el <strong>Centro de Soluciones</strong>, o analiza correos y archivos dudosos con el <strong>Validador de Hashes</strong> y <strong>URLs</strong>.</p>
+                    </div>
+                    <div class="step-card highlight">
+                        <div class="step-number">3</div>
+                        <h4>Reporta a TI si es necesario</h4>
+                        <p>Si detectas un incidente real o un posible virus, usa el canal directo de <strong>Reporte a TI</strong> para notificar al equipo técnico al instante.</p>
+                    </div>
+                    <div class="step-card highlight-note">
+                        <div class="step-number">4</div>
+                        <h4>Nota: Importante</h4>
+                        <p>Esta herramienta es solo para ayudas basicas y no soluciona cualquier problema, por lo que a mayor problema favor contactarse con el equipo de TI.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid de Herramientas Destacadas (Tarjetas Pro Diferenciadas) -->
+            <div class="quick-access-section">
+                <h2 class="quick-title"><i class="fa-solid fa-rocket"></i> Herramientas Principales</h2>
+                <div class="quick-access-grid">
+                    <div class="quick-card-pro" onclick="showSection('passwords')">
+                        <div class="quick-card-header">
+                            <div class="quick-icon-wrapper">
+                                <i class="fa-solid fa-key"></i>
+                            </div>
+                            <span class="quick-badge">Seguridad</span>
+                        </div>
+                        <h3>Contraseñas Seguras</h3>
+                        <p>Evalúa si tu clave es fuerte o genera una impenetrable al instante.</p>
+                        <div class="quick-card-footer">
+                            <span>Probar herramienta</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="quick-card-pro" onclick="showSection('phish-sim')">
+                        <div class="quick-card-header">
+                            <div class="quick-icon-wrapper danger">
+                                <i class="fa-solid fa-fish-fins"></i>
+                            </div>
+                            <span class="quick-badge danger">Práctica</span>
+                        </div>
+                        <h3>Simulador de Phishing</h3>
+                        <p>Aprende a detectar trampas y correos falsos de atacantes.</p>
+                        <div class="quick-card-footer">
+                            <span>Iniciar simulación</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="quick-card-pro" onclick="showSection('hashes')">
+                        <div class="quick-card-header">
+                            <div class="quick-icon-wrapper accent">
+                                <i class="fa-solid fa-fingerprint"></i>
+                            </div>
+                            <span class="quick-badge accent">Verificación</span>
+                        </div>
+                        <h3>Validador de Hashes</h3>
+                        <p>Arrastra archivos para comprobar su huella de seguridad (SHA-256).</p>
+                        <div class="quick-card-footer">
+                            <span>Validar archivo</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="quick-card-pro" onclick="showSection('security-test')">
+                        <div class="quick-card-header">
+                            <div class="quick-icon-wrapper success">
+                                <i class="fa-solid fa-clipboard-check"></i>
+                            </div>
+                            <span class="quick-badge success">Evaluación</span>
+                        </div>
+                        <h3>Test de Postura</h3>
+                        <p>Mide tu nivel de protección en la oficina en 5 preguntas.</p>
+                        <div class="quick-card-footer">
+                            <span>Realizar test</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </section>
+            
+       <!-- VISTA 2: CONTRASEÑAS -->
+        <section id="sec-passwords" class="app-view">
+            <div class="card-section">
+                <h2><i class="fa-solid fa-key"></i> Validador y Generador de Contraseñas Corporativas</h2>
+                <p>Una contraseña débil en la red de la empresa puede comprometer servidores completos. Evalúa tu clave o genera una impenetrable.</p>
+                
+                <div class="pwd-tool-grid">
+                    <div class="pwd-box">
+                        <h3>Evalúa tu contraseña</h3>
+                        <input type="password" id="userPassword" placeholder="Escribe tu contraseña aquí..." />
+                        <div id="pwdResult" class="pwd-feedback hidden">
+                            <p id="pwdStrengthText"><strong>Nivel:</strong> <span></span></p>
+                            <p id="pwdDescText"></p>
+                            <ul id="pwdSuggestions"></ul>
+                        </div>
+                    </div>
+
+                    <div class="pwd-box">
+                        <h3>Generador automático</h3>
+                        <p>Crea una clave corporativa robusta al instante.</p>
+                        <div class="gen-output">
+                            <input type="text" id="generatedPassword" readonly placeholder="Haz clic en generar..." />
+                            <button id="btnGenerate" class="btn-primary">Generar Clave</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISTA 3: GLOSARIO EMPRESARIAL -->
+        <section id="sec-glossary" class="app-view">
+            <div class="card-section">
+                <h2><i class="fa-solid fa-book-open"></i> Glosario de Ciberseguridad Empresarial</h2>
+                <p>Términos técnicos explicados de forma sencilla para la toma de decisiones diarias en la oficina.</p>
+                
+                <input type="text" id="glossarySearch" placeholder="Busca un término (ej. Phishing, VPN, Ransomware, Malware...)" class="search-input">
+
+                <div class="glossary-grid" id="glossaryContainer">
+                    <div class="glossary-card" data-term="phishing">
+                        <h3>Phishing (Suplantación Corporativa)</h3>
+                        <p><strong>¿Qué es?</strong> Correos fraudulentos que imitan a directivos o proveedores para robar credenciales de red.</p>
+                        <p class="tip">💡 <em>Acción:</em> Verifica siempre el dominio del remitente antes de hacer clic.</p>
+                    </div>
+                    <div class="glossary-card" data-term="ransomware">
+                        <h3>Ransomware (Secuestro de Datos)</h3>
+                        <p><strong>¿Qué es?</strong> Malware que cifra archivos de la empresa exigiendo pago de rescate.</p>
+                        <p class="tip">💡 <em>Acción:</em> Desconecta la red inmediatamente si notas archivos extraños.</p>
+                    </div>
+                    <div class="glossary-card" data-term="vpn">
+                        <h3>VPN (Red Privada Virtual)</h3>
+                        <p><strong>¿Qué es?</strong> Túnel seguro para conectarse a los sistemas de la empresa desde ubicaciones remotas.</p>
+                        <p class="tip">💡 <em>Acción:</em> Úsala obligatoriamente al trabajar fuera de la oficina.</p>
+                    </div>
+                    <div class="glossary-card" data-term="malware">
+                        <h3>Malware (Software Malicioso)</h3>
+                        <p><strong>¿Qué es?</strong> Programas intrusivos diseñados para robar información o dañar estaciones de trabajo.</p>
+                        <p class="tip">💡 <em>Acción:</em> No descargues software no autorizado por TI.</p>
+                    </div>
+                    <div class="glossary-card" data-term="ingenieria social">
+                        <h3>Ingeniería Social</h3>
+                        <p><strong>¿Qué es?</strong> Manipulación psicológica de empleados para extraer contraseñas o accesos físicos.</p>
+                        <p class="tip">💡 <em>Acción:</em> Nunca reveles claves ni datos confidenciales por teléfono.</p>
+                    </div>
+                    <div class="glossary-card" data-term="mfa">
+                        <h3>MFA / 2FA (Doble Factor de Autenticación)</h3>
+                        <p><strong>¿Qué es?</strong> Capa extra de seguridad que pide código a tu móvil además de la contraseña.</p>
+                        <p class="tip">💡 <em>Acción:</em> Mantén tus dispositivos vinculados activos y protegidos.</p>
+                    </div>
+                    <div class="glossary-card" data-term="URL">
+                        <h3>URL (Localizador Uniforme de Recursos)</h3>
+                        <p><strong>¿Qué es?</strong> Es la dirección única que se utiliza en internet para identificar, localizar y acceder a un recurso específico, como una página web una imagen, un archivo de video o documento.</p>
+                        <p class="tip">💡 <em>Acción:</em> No hagas click de inmediato, primero y el mas importante paso es detenerte y no abrir el enlace si te llegó por sopresa por un correo o mensaje de texto.</p>
+                    </div>   
+                </div>
+            </div>
+        </section>
+
+        <!-- VISTA 4: VALIDADOR DE HASHES -->
+        <section id="sec-hashes" class="app-view">
+            <div class="card-section">
+                <h2><i class="fa-solid fa-fingerprint"></i> Validador de Hashes (Integridad de Archivos)</h2>
+                
+                <div class="hash-intro-card">
+                    <h3>⏱️ ¿Qué es un Hash y por qué te protege? (Explicación exprés)</h3>
+                    <p>Un <strong>Hash</strong> es la <em>huella dactilar única</em> de un archivo o instalador de software. Si un atacante modifica un archivo para meterle un virus, su huella (hash) cambia. Arrastra tu archivo aquí para verificar que no haya sido alterado. <strong>Funciona en Windows, Linux y Mac.</strong></p>
+                </div>
+
+                <div class="hash-container">
+                    <div id="dropZone" class="drop-zone">
+                        <i class="fa-solid fa-file-arrow-up drop-icon"></i>
+                        <p><strong>Arrastra y suelta tu archivo aquí</strong></p>
+                        <span>o haz clic para seleccionar un archivo de tu equipo</span>
+                        <input type="file" id="fileInput" class="file-input-hidden" />
+                    </div>
+
+                    <div class="pwd-box" style="margin-top: 15px;">
+                        <h3>Resultado de la Huella Digital (SHA-256)</h3>
+                        <div id="hashResultBox" class="hash-output-box">
+                            <p style="color: var(--text-muted);">Arrastra un archivo para calcular su huella SHA-256...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISTA 5: ANALIZADOR DE ENLACES (URLs) -->
+        <section id="sec-urlcheck" class="app-view">
+            <div class="card-section">
+                <h2><i class="fa-solid fa-link"></i> Analizador Preventivo de Enlaces (URLs)</h2>
+                <p>¿Recibiste una dirección web sospechosa por correo o mensaje? Pégala aquí antes de abrirla.</p>
+
+                <div class="pwd-box">
+                    <input type="text" id="urlInput" placeholder="Pega el enlace aquí (ej: http://soporte-empresa-actualizar.com)..." />
+                    <button id="btnAnalyzeUrl" class="btn-primary" style="width: 100%; margin-top: 10px;">Analizar Enlace</button>
+                    
+                    <div id="urlResultBox" class="pwd-feedback hidden" style="margin-top: 15px;">
+                        <h4 id="urlRiskLevel"></h4>
+                        <ul id="urlFlags"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISTA 6: SIMULADOR INTERACTIVO DE PHISHING -->
+        <section id="sec-phish-sim" class="app-view">
+            <div class="card-section">
+                <h2><i class="fa-solid fa-fish-fins"></i> Simulador de Entrenamiento Phishing</h2>
+                <p>Examina este correo interactivo. Haz clic en los elementos que creas sospechosos para identificarlos.</p>
+
+                <div class="email-simulator">
+                    <div class="email-header">
+                        <p><strong>De:</strong> <span class="phish-target" onclick="revealPhish('from')">Soporte TI &lt;soporte-urgente@empresa-secutity-renew.com&gt;</span></p>
+                        <p><strong>Para:</strong> &lt;colaborador@empresa.com&gt;</p>
+                        <p><strong>Asunto:</strong> <span class="phish-target" onclick="revealPhish('subject')">⚠️ URGENTE: Tu cuenta será suspendida en 2 horas</span></p>
+                    </div>
+                    <div class="email-body">
+                        <p>Estimado empleado,</p>
+                        <p>Hemos detectado actividad inusual en tu estación de trabajo. Es necesario revalidar tus credenciales de red inmediatamente para evitar el bloqueo total de tu correo corporativo.</p>
+                        <p style="text-align: center; margin: 20px 0;">
+                            <a href="#" class="phish-button phish-target" onclick="revealPhish('link'); return false;">👉 Haz clic aquí para actualizar tu contraseña</a>
+                        </p>
+                        <p>Atentamente,<br>Departamento de Tecnología y Redes</p>
+                    </div>
+                </div>
+
+                <div id="phishFeedback" class="phish-feedback-box hidden">
+                    <h4 id="phishTitle"></h4>
+                    <p id="phishDesc"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISTA 7: TEST DE POSTURA DE SEGURIDAD -->
+        <section id="sec-security-test" class="app-view">
+            <div class="card-section">
+                <h2><i class="fa-solid fa-clipboard-check"></i> Test de Postura de Seguridad Personal</h2>
+                <p>Responde estas 5 preguntas rápidas para medir tu nivel de protección en la oficina. <br> Nota: Este test es personal y no se registra por ninguna razon el nombre del empleado o usuario que lo complete.</p>
+
+                <form id="quizForm" class="quiz-container">
+                    <div class="quiz-question">
+                        <p>1. ¿Qué haces cuando te levantas de tu escritorio para ir a una reunión o al baño?</p>
+                        <label><input type="radio" name="q1" value="10"> Bloqueo mi pantalla con (Win + L)</label><br>
+                        <label><input type="radio" name="q1" value="0"> La dejo encendida, regreso en unos minutos</label>
+                    </div>
+                    <div class="quiz-question">
+                        <p>2. Si recibes un correo de tu Director solicitando una transferencia o contraseña urgente, tú:</p>
+                        <label><input type="radio" name="q2" value="10"> Verifico por otro canal oficial (llamada o chat directo)</label><br>
+                        <label><input type="radio" name="q2" value="0"> Respondo inmediatamente para no hacerlo esperar</label>
+                    </div>
+                    <div class="quiz-question">
+                        <p>3. ¿Dónde guardas tus contraseñas corporativas?</p>
+                        <label><input type="radio" name="q3" value="10"> En un gestor oficial de contraseñas aprobado por la empresa</label><br>
+                        <label><input type="radio" name="q3" value="0"> En un bloc de notas, libreta o post-it en el escritorio</label>
+                    </div>
+                    <div class="quiz-question">
+                        <p>4. ¿Conectas memorias USB de origen desconocido a tu PC de trabajo?</p>
+                        <label><input type="radio" name="q4" value="10"> Nunca, las llevo primero a TI para su escaneo</label><br>
+                        <label><input type="radio" name="q4" value="0"> Sí, para ver qué archivos contiene</label>
+                    </div>
+                    <div class="quiz-question">
+                        <p>5. ¿Tienes activado el Doble Factor de Autenticación (MFA/2FA) en tu correo?</p>
+                        <label><input type="radio" name="q5" value="10"> Sí, en todas mis cuentas autorizadas</label><br>
+                        <label><input type="radio" name="q5" value="0"> No lo he configurado aún</label>
+                    </div>
+                     <div class="quiz-question">
+                        <p>6. ¿Compartes tus credenciales con algun compañero de trabajo?</p>
+                        <label><input type="radio" name="q5" value="0"> Sí, en ocaciones lo hago</label><br>
+                        <label><input type="radio" name="q5" value="10"> No, nunca comparto mis credenciales ni con mi supervisor</label>
+                    </div>
+                     <div class="quiz-question">
+                        <p>7. ¿Qué debes hacer si la computadora te pide instalar una actualización de seguridad del sistema?</p>
+                        <label><input type="radio" name="q5" value="0"> Posponerla siempre para que no me interrumpa el trabajo</label><br>
+                        <label><input type="radio" name="q5" value="10"> Notificar a TI, guardar mi trabajo y esperar a que TI me notifique lo que tengo que hacer</label>
+                    </div>
+                     <div class="quiz-question">
+                        <p>8. Un desconocido llega a la oficina caminando detrás de ti y te pide que le abras la puerta porque olvidó su carne ¿Qué haces?</p>
+                        <label><input type="radio" name="q5" value="0"> Le abro la puerta amablemente para ser educado</label><br>
+                        <label><input type="radio" name="q5" value="0"> Lo dejo pasar y me voy sin preguntarle nada.</label><br>
+                        <label><input type="radio" name="q5" value="10"> Le pido que pase por recepción oficial para registrarse antes de entrar.</label>
+                    </div>
+                      <div class="quiz-question">
+                        <p>9. Alguien te llama por teléfono diciendo que es del soporte técnico de la empresa y te pide tu contraseña para "arreglar un problema con tu PC". ¿Cómo reaccionas?</p>
+                        <label><input type="radio" name="q5" value="0"> Se la doy con gusto para que solucione el problema rápido.</label><br>
+                        <label><input type="radio" name="q5" value="0"> Le pregunte su nombre y se la doy si me suena conocido.</label><br>
+                        <label><input type="radio" name="q5" value="10"> Le digo que no se la puedo dar, cuelgo la llamada y lo notifico a TI.</label>
+                    </div>
+                     <div class="quiz-question">
+                        <p>10. ¿Qué debes hacer si te encuentras un documento impreso confidencial de la empresa olvidado en la impresora o en una mesa?</p>
+                        <label><input type="radio" name="q5" value="0"> Dejarlo ahi donde está para que lo encuentre el dueño.</label><br>
+                        <label><input type="radio" name="q5" value="0"> Leerlo completo por curiosidad y luego tirarlo a la basura.</label><br>
+                        <label><input type="radio" name="q5" value="10"> Recogerlo y entregarlo de inmediato al departamento correspondiente o a TI para mantener la seguridad de la información.</label>
+                    </div>
+                  
+                    <button type="button" onclick="calculateQuiz()" class="btn-primary" style="margin-top: 15px;">Evaluar mi Puntaje</button>
+                </form>
+
+                <div id="quizResult" class="pwd-feedback hidden" style="margin-top: 20px;">
+                    <h3 id="quizScoreText"></h3>
+                    <p id="quizAdvice"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISTA 8: REPORTE RÁPIDO DE INCIDENTE A TI -->
+        <section id="sec-report-incident" class="app-view">
+            <div class="card-section">
+                <h2><i class="fa-solid fa-paper-plane"></i> Reportar Incidente o Sospecha a TI</h2>
+                <p>Informa sobre correos sospechosos, comportamientos inusuales de la PC o posibles brechas.</p>
+
+                <form id="incidentForm" onsubmit="submitIncident(event)">
+                    <div class="pwd-box" style="margin-bottom: 15px;">
+                        <label style="display:block; margin-bottom:5px;">Tipo de Incidente:</label>
+                        <select id="incType" class="search-input" style="margin-bottom: 10px;" required>
+                            <option value="Phishing">Correo o Llamada Sospechosa (Phishing/Vishing)</option>
+                            <option value="Malware">Comportamiento Extraño / Posible Virus</option>
+                            <option value="LostDevice">Pérdida de Dispositivo Corporativo / USB</option>
+                            <option value="Other">Otro Problema de Seguridad</option>
+                        </select>
+
+                        <label style="display:block; margin-bottom:5px;">Detalles o Descripción:</label>
+                        <textarea id="incDetails" class="search-input" rows="4" placeholder="Escribe el remitente del correo, qué ocurrió o qué mensaje ves..." required></textarea>
+
+                        <button type="submit" class="btn-primary" style="width:100%;">Enviar Reporte Urgente a TI</button>
+                    </div>
+                </form>
+                <div id="incidentResponse" class="pwd-feedback hidden"></div>
+            </div>
+        </section>
+
+        <!-- VISTA 9: CENTRO DE SOLUCIONES DE SOPORTE -->
+        <section id="sec-solutions" class="app-view">
+            <div class="card-section">
+                <h2><i class="fa-solid fa-screwdriver-wrench"></i> Centro de Soluciones de Soporte</h2>
+                <p>Resuelve incidencias frecuentes siguiendo los protocolos aprobados antes de reportar a TI. Si no desea seguir estos protocolos puede notificar directemente al departamento de TI de su Organización.</p>
+
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="switchTab(event, 'phishing-prob')">🎣 Phishing y Ataques</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'sys-prob')">💻 Sistema</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'net-prob')">🌐 Redes</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'hw-prob')">🖨️ Equipos</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'malware-prob')">🛡️ Malware</button>
+                </div>
+
+                <div id="phishing-prob" class="tab-content active">
+                    <div class="steps-grid">
+                        <div class="step-card">
+                            <h4>1. Recibí un correo sospechoso o con adjuntos dudosos</h4>
+                            <p><strong>Qué hacer:</strong> No abras el archivo adjunto ni hagas clic en enlaces. Revisa la dirección de correo real del remitente. Reporta el correo al equipo de TI usando la opción "Reportar Incidente".</p>
+                        </div>
+                        <div class="step-card">
+                            <h4>2. Ingresé mis datos en una página falsa por error</h4>
+                            <p><strong>Qué hacer:</strong> Cambia inmediatamente la contraseña de tu cuenta corporativa desde un equipo seguro y notifica a TI para que revoquen las sesiones activas.</p>
+                        </div>
+                        <div class="step-card">
+                            <h4>3. Llamada telefónica pidiendo claves (Vishing / Suplantación)</h4>
+                            <p><strong>Qué hacer:</strong> El personal corporativo legítimo de TI NUNCA te pedirá tu contraseña por teléfono ni correo. Cuelga inmediatamente y valida con tu supervisor.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sys-prob" class="tab-content">
+                    <div class="steps-grid">
+                        <div class="step-card">
+                            <h4>1. Estación de trabajo congelada o lenta</h4>
+                            <p><strong>Qué hacer:</strong> Presiona <code>Ctrl + Shift + Esc</code> para abrir el Administrador de tareas, identifica el proceso colgado y finalízalo. Si persiste, reinicia el equipo.</p>
+                        </div>
+                        <div class="step-card">
+                            <h4>2. Aplicación corporativa no responde</h4>
+                            <p><strong>Qué hacer:</strong> Cierra sesión de la app, limpia caché del navegador corporativo y vuelve a ingresar. No intentes reinstalar software por cuenta propia.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="net-prob" class="tab-content">
+                    <div class="steps-grid">
+                        <div class="step-card">
+                            <h4>1. Pérdida de conexión a la Red Interna / VPN</h4>
+                            <p><strong>Qué hacer:</strong> Desconecta y reconecta tu sesión de VPN corporativa. Si usas cable, verifica que esté firmemente conectado al puerto de pared.</p>
+                        </div>
+                        <div class="step-card">
+                            <h4>2. Navegador indica "Sin conexión a Internet"</h4>
+                            <p><strong>Qué hacer:</strong> Comprueba el estado del Wi-Fi de la oficina o reinicia el adaptador de red desde la bandeja de sistema de Windows/Linux.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="hw-prob" class="tab-content">
+                    <div class="steps-grid">
+                        <div class="step-card">
+                            <h4>1. Impresora departamental offline o con trabajos trabados</h4>
+                            <p><strong>Qué hacer:</strong> Ve a Configuración de Impresoras, abre la cola de impresión y elimina documentos corruptos. Apaga y enciende la impresora departamental.</p>
+                        </div>
+                        <div class="step-card">
+                            <h4>2. Proyector o pantalla de sala de juntas sin señal</h4>
+                            <p><strong>Qué hacer:</strong> Verifica las conexiones HDMI/USB-C y presiona las teclas <code>Windows + P</code> para alternar el modo de proyección.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="malware-prob" class="tab-content">
+                    <div class="steps-grid">
+                        <div class="step-card">
+                            <h4>1. Detección de comportamiento sospechoso o Ransomware</h4>
+                            <p><strong>Qué hacer:</strong> Desconecta el cable de red o apaga el Wi-Fi de inmediato para evitar propagación en la red de la empresa. Notifica a TI con urgencia.</p>
+                        </div>
+                        <div class="step-card">
+                            <h4>2. Pantallas emergentes o troyanos detectados</h4>
+                            <p><strong>Qué hacer:</strong> No hagas clic en ningún botón de alerta falsa. Ejecuta un análisis rápido con el antivirus corporativo predeterminado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISTA 10: POLÍTICAS -->
+        <section id="sec-policies" class="app-view">
+            <div class="card-section">
+                <h2><i class="fa-solid fa-file-shield"></i> Políticas de Seguridad para Colaboradores</h2>
+                <p>Normas fundamentales para preservar la postura de ciberseguridad de la organización. <br><br> Nota: Si su organización ya cuenta con normas y politicas de seguridad es recomendable que las siga y ponga en practica para evitar cualquier brecha de seguridad. <br><br> Estas politicas son solo tips para los usuarios y no sustituyen las politicas de una empresa.</p>
+                
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <h4>🔒 Clean Desk Policy (Escritorio Limpio)</h4>
+                        <p>Nunca dejes contraseñas anotadas en post-its sobre el monitor ni documentos corporativos confidenciales sin supervisión al retirarte de tu puesto.</p>
+                    </div>
+                    <div class="step-card">
+                        <h4>🔑 Uso Exclusivo de Credenciales</h4>
+                        <p>Tus credenciales de usuario son intransferibles. Compartir tu usuario con compañeros de equipo viola las normativas de auditoría interna.</p>
+                    </div>
+                    <div class="step-card">
+                        <h4>💾 Dispositivos USB Externos</h4>
+                        <p>Prohibido conectar memorias USB personales a equipos corporativos. Todo dispositivo externo debe ser previamente analizado por TI.</p>
+                    </div>
+                    <div class="step-card">
+                        <h4>🌐 Uso Aceptable de Internet</h4>
+                        <p>La red y equipos corporativos son de uso laboral. Se prohíbe la descarga de archivos no autorizados y divulgar datos internos en redes sociales.</p>
+                    </div>
+                    <div class="step-card">
+                        <h4>📶 Conexión Segura en Trabajo Remoto</h4>
+                        <p>Uso obligatorio de la VPN corporativa al trabajar fuera de la oficina o al conectarse desde redes Wi-Fi públicas.</p>
+                    </div>
+                    <div class="step-card">
+                        <h4>📱 Seguridad en Dispositivos Móviles</h4>
+                        <p>Todo teléfono con acceso a datos de la empresa debe tener bloqueo de pantalla activo (PIN/biometría) y sistema actualizado.</p>
+                    </div>
+                    <div class="step-card">
+                        <h4>🗑️ Destrucción de Información Confidencial</h4>
+                        <p>Los documentos impresos con datos sensibles deben triturarse. Nunca deben desecharse enteros en papeleras comunes.</p>
+                    </div>
+                    <div class="step-card">
+                        <h4>🚨 Reporte Obligatorio de Incidentes</h4>
+                        <p>Notifica de inmediato a TI si pierdes un equipo, recibes correos sospechosos o notas comportamientos anómalos en tu PC.</p>
+                    </div>
+                    <div class="step-card">
+                        <h4>🔄 Actualizaciones de Seguridad</h4>
+                        <p>No pospongas las actualizaciones del sistema ni del antivirus. Reinicia el equipo cuando el sistema lo solicite para aplicar parches.</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- VISTA 11: ACERCA DE -->
+        <section id="sec-about" class="app-view">
+            <div class="card-section">
+                <h2><i class="fa-solid fa-building-shield"></i> Acerca de SecuGuide Enterprise</h2>
+                <p><strong>SecuGuide Enterprise</strong> es una plataforma modular de concienciación y soporte preventivo diseñada para mitigar el error humano en las organizaciones, protegiendo los activos digitales corporativos.</p>
+                <div class="creators-box">
+                    <h3>Gobernanza y Soporte Tecnológico</h3>
+                    <p>Desarrollada para empoderar a los empleados mediante guías intuitivas y herramientas de autoconsulta, asegurando la continuidad del negocio y optimizando los tiempos de respuesta del departamento de TI. <br><br> Recordando siempre que esta plataforma no es una herramienta definitiva, se creo para acompañar hasta cierto punto al usuario. Por lo que si presenta un problema mayor favor contactarse con el departamente de TI de su organización.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SecuGuide Enterprise. Plataforma de Autoconsulta y Ciberseguridad Corporativa.</p>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
