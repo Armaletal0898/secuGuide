@@ -164,7 +164,13 @@ podman run -d --replace -p 8000:8000 --name secu-guide-container localhost/secu-
 
 ```
 
+### Eliminar el contenedor anterior
 
+```bash
+
+podman rm -r secu-guide-container
+
+```
 
 
 <br>
