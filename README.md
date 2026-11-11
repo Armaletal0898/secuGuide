@@ -139,7 +139,7 @@ equipo de forma autónoma.
 interacción directa del cliente sin requerir registro con tarjeta de crédito o pasarelas de pago.
 
 
-
+<br>
 
 
 # Despliegue de plataforma
