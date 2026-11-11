@@ -105,8 +105,7 @@ autoaprendizaje y optimiza los tiempos de respuesta ante fallas informáticas co
   +  Guía sobre el uso de autenticación de dos factores (2FA) y gestores de contraseñas.
   
 **2. Módulo de Gestión de Archivos y Correos Sospechosos:**
-  +  Lista de vericación (Checklist) interactiva para identicar correos de phishing y
-extensiones de archivos de alto riesgo.
+  +  Simulador interactivo basico para identicar correos de phishing.
   +  Pasos de actuación inmediata ante la sospecha de un archivo malicioso **(desconexión de
 red, no ejecución, reporte)**.
 
