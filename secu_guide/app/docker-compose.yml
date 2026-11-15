@@ -3,7 +3,7 @@ version: '3.8'
 services:
   secu-guide-app:
     build:
-      context: ./secu_guide/app
+      context: .
       dockerfile: Dockerfile
     container_name: secu-guide-container
     restart: unless-stopped
