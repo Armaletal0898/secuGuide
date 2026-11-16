@@ -82,10 +82,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 4. Drag & Drop y Hash de Archivos (Web Crypto Client-side)
+    // 4. Drag & Drop y Hash de Archivos (API Backend)
     const dropZone = document.getElementById("dropZone");
     const fileInput = document.getElementById("fileInput");
-    const hashResultBox = document.getElementById("hashResultBox"); // <--- Declaración añadida correctamente
+    const hashResultBox = document.getElementById("hashResultBox");
 
     if (dropZone && fileInput) {
         dropZone.addEventListener("click", () => fileInput.click());
@@ -104,13 +104,26 @@ document.addEventListener("DOMContentLoaded", () => {
     async function processFileHash(file) {
         if (!hashResultBox) return;
         hashResultBox.innerHTML = `<p style="color: var(--accent-color);">Procesando <strong>${file.name}</strong>...</p>`;
+        
         try {
-            const buffer = await file.arrayBuffer();
-            const hashBuffer = await crypto.subtle.digest("SHA-256", buffer);
-            const hashHex = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, "0")).join("");
-            hashResultBox.innerHTML = `<p><strong>Archivo:</strong> ${file.name}</p><p style="color: var(--success-color);"><strong>SHA-256:</strong> ${hashHex}</p>`;
+            const formData = new FormData();
+            formData.append("file", file);
+
+            const response = await fetch("/api/hash", {
+                method: "POST",
+                body: formData
+            });
+            
+            const data = await response.json();
+
+            if (response.ok) {
+                hashResultBox.innerHTML = `<p><strong>Archivo:</strong> ${file.name}</p><p style="color: var(--success-color);"><strong>SHA-256:</strong> ${data.hash || data.sha256 || JSON.stringify(data)}</p>`;
+            } else {
+                hashResultBox.innerHTML = `<p style="color: var(--danger-color);">Error del servidor al calcular hash.</p>`;
+            }
         } catch (err) {
-            hashResultBox.innerHTML = `<p style="color: var(--danger-color);">Error calculando hash.</p>`;
+            console.error("Error:", err);
+            hashResultBox.innerHTML = `<p style="color: var(--danger-color);">Error de conexión al calcular hash.</p>`;
         }
     }
 
