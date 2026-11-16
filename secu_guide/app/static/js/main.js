@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 4. Drag & Drop y Hash de Archivos (Web Crypto Client-side)
     const dropZone = document.getElementById("dropZone");
     const fileInput = document.getElementById("fileInput");
-    const hashResultBox = document.getElementById("hashResultBox");
+    const hashResultBox = document.getElementById("hashResultBox"); // <--- Declaración añadida correctamente
 
     if (dropZone && fileInput) {
         dropZone.addEventListener("click", () => fileInput.click());
@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     async function processFileHash(file) {
+        if (!hashResultBox) return;
         hashResultBox.innerHTML = `<p style="color: var(--accent-color);">Procesando <strong>${file.name}</strong>...</p>`;
         try {
             const buffer = await file.arrayBuffer();
