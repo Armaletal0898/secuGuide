@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, UploadFile, File
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
@@ -6,6 +6,7 @@ import os
 import random
 import string
 import re
+import hashlib
 
 app = FastAPI(title="SecuGuide Enterprise - Asistente de Seguridad y Soporte")
 
@@ -121,6 +122,24 @@ def report_incident(data: IncidentReport):
         "ticket_id": ticket_id,
         "message": f"Reporte de {data.incident_type} recibido correctamente. El equipo de TI lo ha puesto en cola prioritaria."
     }
+
+# ==========================================
+# NUEVO ENDPOINT: Validador de Hash SHA-256
+# ==========================================
+@app.post("/api/hash")
+async def calculate_file_hash(file: UploadFile = File(...)):
+    try:
+        sha256_hash = hashlib.sha256()
+        # Lee el archivo en bloques directamente desde el búfer sin tocar el disco duro
+        while chunk := await file.read(65536):
+            sha256_hash.update(chunk)
+        
+        return {
+            "filename": file.filename,
+            "hash": sha256_hash.hexdigest()
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error calculando hash: {str(e)}")
 
 if __name__ == "__main__":
     import uvicorn
